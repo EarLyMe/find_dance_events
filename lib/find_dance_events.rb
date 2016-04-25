@@ -1,11 +1,2 @@
-require "find_dance_events/version"
-
-module FindDanceEvents
-  class Hello
-
-    def say_hello
-    puts "Hello World!"
-    end
-
-  end
-end
+require_relative "./find_dance_events/version"
+require_relative "./find_dance_events/cli"

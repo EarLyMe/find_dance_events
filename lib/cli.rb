@@ -1,6 +1,6 @@
 class FindDanceEvents::CLI
-  
+
   def call
-    puts "Welcome to Find Dance Events"
+    puts "Find Dance Events"
   end
 end
