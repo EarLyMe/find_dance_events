@@ -1,28 +1,14 @@
 # FindDanceEvents
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/find_dance_events`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Find Dance Events! This gem enables the user to find interesting and upcoming dance events in a few different countries. The information for this gem is scraped from a website called DanceCal, the url for which is here: http://dancecal.com/. The program will take a user's selected country and display a list of events that take place there and can also give more information on a specific event if the user so chooses.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'find_dance_events'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install find_dance_events
 
 ## Usage
 
-TODO: Write usage instructions here
+Type $find_dance_events and follow the onscreen prompts.
 
 ## Development
 
@@ -38,4 +24,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
