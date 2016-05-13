@@ -1,9 +1,3 @@
-
-
-require "nokogiri"
-require "open-uri"
-require "pry"
-
 class FindDanceEvents::Scraper
 
   def self.scrape_dancecal

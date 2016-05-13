@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Laka134"]
   spec.email         = ["earlleah@gmail.com"]
 
-  spec.summary       = %q{Find dance events in the US.}
-  spec.description   = %q{Users can look up dance events in the US by name, location or date.}
+  spec.summary       = %q{Find dance events in several countries.}
+  spec.description   = %q{Users can look up dance events by country and see details on a specific event.}
   spec.homepage      = "https://github.com/LeahEarl/find_dance_events"
   spec.license       = "MIT"
 

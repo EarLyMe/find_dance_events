@@ -4,11 +4,11 @@ Welcome to Find Dance Events! This gem enables the user to find interesting and 
 
 ## Installation
 
-    $ gem install find_dance_events
+  Type  $ gem install find_dance_events
 
 ## Usage
 
-Type $find_dance_events and follow the onscreen prompts.
+Type find_dance_events and follow the onscreen prompts.
 
 ## Development
 

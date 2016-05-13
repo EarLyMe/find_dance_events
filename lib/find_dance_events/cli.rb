@@ -1,4 +1,3 @@
-
 class FindDanceEvents::CLI
   attr_reader :countries
 

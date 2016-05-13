@@ -1,7 +1,3 @@
-require "nokogiri"
-require "open-uri"
-require "pry"
-
 class FindDanceEvents::Event
   attr_accessor :name, :location, :country, :date, :dance, :desc
 
