@@ -83,6 +83,7 @@ class FindDanceEvents::CLI
   end
 
   def more_info(country, input)
+    puts " "
     puts "#{country.events[input-1].name} in #{country.events[input-1].location}:"
     puts "------------------------------------------------------"
     puts "Starts on #{country.events[input-1].date}"
@@ -90,7 +91,6 @@ class FindDanceEvents::CLI
     puts " "
     puts "#{country.events[input-1].desc}"
     puts " "
-    sleep(10)
   end
 
 end
