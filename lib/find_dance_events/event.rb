@@ -14,9 +14,5 @@ class FindDanceEvents::Event
   def self.find_by_name(name)
     self.all.detect {|event| event.name == name}
   end
-=begin
-  def self.find_or_create_by_name(name)
-    self.find_by_name(name) ? self.find_by_name(name) : self.new
-  end
-=end
+
 end

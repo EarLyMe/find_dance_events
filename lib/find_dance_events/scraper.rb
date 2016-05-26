@@ -1,5 +1,3 @@
-require 'pry'
-
 class FindDanceEvents::Scraper
 
   def self.scrape_dancecal
@@ -12,6 +10,9 @@ class FindDanceEvents::Scraper
 
         event.name = e.css(".DCEventInfoName").text
         event.location = e.css(".DCEventInfoWhere").text.split("City: ")[1]
+        event.date = e.css(".DCEventInfoDate").text
+        event.dance = e.css(".DCEventInfoDances").text
+        event.desc = e.css(".DCEventInfoDesc").text
 
         if e.css(".DCEventInfoWhere").text.split(", ")[2]
           event.country = e.css(".DCEventInfoWhere").text.split(", ")[2]
@@ -19,17 +20,13 @@ class FindDanceEvents::Scraper
           event.country = e.css(".DCEventInfoWhere").text.split(", ")[1]
         end
 
-        event.date = e.css(".DCEventInfoDate").text
-        event.dance = e.css(".DCEventInfoDances").text
-        event.desc = e.css(".DCEventInfoDesc").text
-
         event.save
       else
         FindDanceEvents::Event.find_by_name(name)
       end
     end
+    FindDanceEvents::Country.create_from_events
   end
-#FindDanceEvents::Scraper.scrape_dancecal
 end
 
 #location = doc.css(".DCEventNameLocation").text

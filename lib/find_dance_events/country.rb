@@ -25,4 +25,10 @@ class FindDanceEvents::Country
     self.find_by_name(name) ? self.find_by_name(name) : self.new(name)
   end
 
+  def self.create_from_events
+    FindDanceEvents::Event.all.each do |event|
+       country = self.find_or_create_by_name(event.country)
+       country.add_event(event)
+     end
+  end
 end
