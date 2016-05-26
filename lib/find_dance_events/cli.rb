@@ -12,9 +12,9 @@ class FindDanceEvents::CLI
   end
 
   def make_events
-    FindDanceEvents::Scraper.scrape_dancecal.each do |event_hash|
-       event = FindDanceEvents::Event.new(event_hash)
+    FindDanceEvents::Scraper.scrape_dancecal.each do |event|
        country = FindDanceEvents::Country.find_or_create_by_name(event.country)
+       event.country = country
        country.add_event(event)
      end
   end
@@ -32,7 +32,6 @@ class FindDanceEvents::CLI
 
   def menu
     input = nil
-
 
     while input != "exit"
       input = gets.strip.downcase

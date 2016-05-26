@@ -1,3 +1,5 @@
+require 'pry'
+
 class FindDanceEvents::Scraper
 
   def self.scrape_dancecal
@@ -5,24 +7,28 @@ class FindDanceEvents::Scraper
     events = []
 
     doc.css(".DCEvent").each do |e|
-      event_name = e.css(".DCEventInfoName").text
-      event_location = e.css(".DCEventInfoWhere").text.split("City: ")[1]
+      event = FindDanceEvents::Event.new
+
+      event.name = e.css(".DCEventInfoName").text
+      event.location = e.css(".DCEventInfoWhere").text.split("City: ")[1]
 
       if e.css(".DCEventInfoWhere").text.split(", ")[2]
-        event_country = e.css(".DCEventInfoWhere").text.split(", ")[2]
+        event.country = e.css(".DCEventInfoWhere").text.split(", ")[2]
       else
-        event_country = e.css(".DCEventInfoWhere").text.split(", ")[1]
+        event.country = e.css(".DCEventInfoWhere").text.split(", ")[1]
       end
 
-      event_date = e.css(".DCEventInfoDate").text
-      event_dance = e.css(".DCEventInfoDances").text
-      event_desc = e.css(".DCEventInfoDesc").text
+      event.date = e.css(".DCEventInfoDate").text
+      event.dance = e.css(".DCEventInfoDances").text
+      event.desc = e.css(".DCEventInfoDesc").text
 
-      events << {name: event_name, location: event_location, country: event_country, date: event_date, dance: event_dance, desc: event_desc}
+      events << event
     end
-      events.uniq!
+      events.uniq
+      #binding.pry
   end
 
+#FindDanceEvents::Scraper.scrape_dancecal
 end
 
 #location = doc.css(".DCEventNameLocation").text

@@ -15,7 +15,6 @@ class FindDanceEvents::Country
 
   def add_event(event)
     @events << event
-    event.country = self
   end
 
   def self.find_by_name(name)

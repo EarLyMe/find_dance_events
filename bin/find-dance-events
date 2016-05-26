@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "find_dance_events"
+require_relative "../lib/find_dance_events"
 
 FindDanceEvents::CLI.new.call
