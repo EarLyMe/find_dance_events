@@ -2,7 +2,8 @@ class FindDanceEvents::CLI
   attr_reader :countries
 
   def call
-    make_events
+    get_events
+    make_events_and_countries
     puts "Welcome to Find Dance Events!"
     sleep(2)
     puts "Here are a list of countries holding upcoming events:"
@@ -11,7 +12,11 @@ class FindDanceEvents::CLI
     menu
   end
 
-  def make_events
+  def get_events
+    FindDanceEvents::Scraper.scrape_dancecal
+  end
+
+  def make_events_and_countries
     FindDanceEvents::Event.all.each do |event|
        country = FindDanceEvents::Country.find_or_create_by_name(event.country)
        country.add_event(event)
