@@ -18,7 +18,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/find_dance_events.
+Bug reports and pull requests are welcome on GitHub at https://github.com/LeahEarl/find_dance_events.
 
 
 ## License
