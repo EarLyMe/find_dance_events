@@ -12,9 +12,8 @@ class FindDanceEvents::CLI
   end
 
   def make_events
-    FindDanceEvents::Scraper.scrape_dancecal.each do |event|
+    FindDanceEvents::Event.all.each do |event|
        country = FindDanceEvents::Country.find_or_create_by_name(event.country)
-       event.country = country
        country.add_event(event)
      end
   end

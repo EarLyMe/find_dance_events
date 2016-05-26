@@ -4,30 +4,31 @@ class FindDanceEvents::Scraper
 
   def self.scrape_dancecal
     doc = Nokogiri::HTML(open("http://dancecal.com/"))
-    events = []
 
     doc.css(".DCEvent").each do |e|
-      event = FindDanceEvents::Event.new
+      name = e.css(".DCEventInfoName").text
+      unless FindDanceEvents::Event.find_by_name(name)
+        event = FindDanceEvents::Event.new
 
-      event.name = e.css(".DCEventInfoName").text
-      event.location = e.css(".DCEventInfoWhere").text.split("City: ")[1]
+        event.name = e.css(".DCEventInfoName").text
+        event.location = e.css(".DCEventInfoWhere").text.split("City: ")[1]
 
-      if e.css(".DCEventInfoWhere").text.split(", ")[2]
-        event.country = e.css(".DCEventInfoWhere").text.split(", ")[2]
+        if e.css(".DCEventInfoWhere").text.split(", ")[2]
+          event.country = e.css(".DCEventInfoWhere").text.split(", ")[2]
+        else
+          event.country = e.css(".DCEventInfoWhere").text.split(", ")[1]
+        end
+
+        event.date = e.css(".DCEventInfoDate").text
+        event.dance = e.css(".DCEventInfoDances").text
+        event.desc = e.css(".DCEventInfoDesc").text
+
+        event.save
       else
-        event.country = e.css(".DCEventInfoWhere").text.split(", ")[1]
+        FindDanceEvents::Event.find_by_name(name)
       end
-
-      event.date = e.css(".DCEventInfoDate").text
-      event.dance = e.css(".DCEventInfoDances").text
-      event.desc = e.css(".DCEventInfoDesc").text
-
-      events << event
     end
-      events.uniq
-      #binding.pry
   end
-
 #FindDanceEvents::Scraper.scrape_dancecal
 end
 
